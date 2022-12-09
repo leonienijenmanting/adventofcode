@@ -99,4 +99,66 @@ for (let i = 0; i < resultGridNorth[0].length; i++) {
     // console.log(resultGridNorth[j][i], resultGridEast[j][i], resultGridSouth[j][i], resultGridWest[j][i]);
   }
 }
-console.log(totalVisibleTrees);
+// answer for assignment 1
+// console.log(totalVisibleTrees);
+
+// assignment 2
+// console.log(grid);
+
+const resultGrid = grid.map(() => []);
+for (let i = 0; i < grid.length; i++) {
+  for (let j = 0; j < grid[i].length; j++) {
+    const treeHeight = grid[i][j];
+    
+    const visibleTrees = {
+      north: 0,
+      east: 0,
+      south: 0,
+      west: 0,
+    };
+    for (let k = j - 1; k >= 0; k--) {
+      const treeHeightToCompare = grid[i][k];
+      visibleTrees.east++;
+      if (treeHeightToCompare >= treeHeight) {
+        break;
+      }
+    }
+    for (let k = j + 1; k < grid[i].length; k++) {
+      const treeHeightToCompare = grid[i][k];
+      visibleTrees.west++;
+      if (treeHeightToCompare >= treeHeight) {
+        break;
+      }
+    }
+    for (let k = i - 1; k >= 0; k--) {
+      const treeHeightToCompare = grid[k][j];
+      visibleTrees.north++;
+      if (treeHeightToCompare >= treeHeight) {
+        break;
+      }
+    }
+    for (let k = i + 1; k < grid.length; k++) {
+      const treeHeightToCompare = grid[k][j];
+      visibleTrees.south++;
+      if (treeHeightToCompare >= treeHeight) {
+        break;
+      }
+    }
+    resultGrid[i][j] = visibleTrees.north * visibleTrees.south * visibleTrees.east * visibleTrees.west;
+  }
+}
+
+// console.log(resultGrid);
+
+let maximumScore = 0;
+
+for (let i = 0; i < resultGrid.length; i++) {
+  for (let j = 0; j < resultGrid[i].length; j++) {
+    const treeScore = resultGrid[i][j];
+    if (treeScore > maximumScore) {
+      maximumScore = treeScore;
+    }
+  }
+}
+
+console.log(maximumScore);
