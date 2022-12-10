@@ -12,7 +12,7 @@ const runForFile = (filename) => {
 
   let headPosition = [0,0];
   let tailPosition = [0,0];
-  const visitedPositionsForTail = [tailPosition];
+  const visitedPositionsForTail = [[...tailPosition]];
 
   const takeStep = (direction) => {
     // update the headPosition
