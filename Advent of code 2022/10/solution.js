@@ -9,7 +9,6 @@ const runForFile = (filename) => {
 
   for (let i = 0; i < lines.length; i++) {
     const [command, param] = lines[i].split(' ');
-    console.log(command);
 
     if (command === 'noop' || command === 'addx') {
       const value = valuesAtCycle[cycle];
@@ -30,6 +29,20 @@ const runForFile = (filename) => {
     signalStrengthSum += signalStrength;
   }
   console.log(signalStrengthSum);
+
+  // assignment 2
+  for (let i = 0; i < valuesAtCycle.length - 1; i += 40) {
+    let line = '';
+    for (let j = 0; j < 40; j ++) {
+      const valueAtCycle = valuesAtCycle[i+j];
+      if (valueAtCycle >= j - 1 && valueAtCycle <= j + 1) {
+        line += '#';
+      } else {
+        line += '.'
+      }
+    }
+    console.log(line);
+  }
 };
 
 runForFile('input.txt');
