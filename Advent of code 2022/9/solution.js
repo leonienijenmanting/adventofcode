@@ -1,5 +1,11 @@
 const fs = require('fs');
 
+const getUniqueArraysInsideArray = (arrayOfArrays) => {
+  const arrayOfStrings = arrayOfArrays.map(JSON.stringify);
+  const uniqueStringValues = arrayOfStrings.filter((value, index, self) => self.indexOf(value) === index)
+  return uniqueStringValues.map(JSON.parse);
+};
+
 const runForFile = (filename) => {
   const input = fs.readFileSync(filename, 'utf-8');
   const commands = input.split('\n');
@@ -20,9 +26,9 @@ const runForFile = (filename) => {
     // determine number of steps (n)
     // call the takeStep function with the correct direction n times
 
-  // make a new const uniqueVisitedPositionsForTail
-    // assign only unique values of visitedPositionsForTail
-  // console log the length of uniqueVisitedPositionsForTail
+  const uniqueVisitedPositionsForTail = getUniqueArraysInsideArray(visitedPositionsForTail);
+
+  // console.log the length of uniqueVisitedPositionsForTail
 };
 
 runForFile('test.txt');
