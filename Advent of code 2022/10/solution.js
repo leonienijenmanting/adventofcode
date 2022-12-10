@@ -28,9 +28,11 @@ const runForFile = (filename) => {
     const signalStrength = valuesAtCycle[i-1] * i;
     signalStrengthSum += signalStrength;
   }
+  console.log('\nAssignment 1:');
   console.log(signalStrengthSum);
 
   // assignment 2
+  console.log('\nAssignment 2:\n');
   for (let i = 0; i < valuesAtCycle.length - 1; i += 40) {
     let line = '';
     for (let j = 0; j < 40; j ++) {
@@ -38,11 +40,12 @@ const runForFile = (filename) => {
       if (valueAtCycle >= j - 1 && valueAtCycle <= j + 1) {
         line += '#';
       } else {
-        line += '.'
+        line += ' '
       }
     }
     console.log(line);
   }
+  console.log('\n');
 };
 
 runForFile('input.txt');
