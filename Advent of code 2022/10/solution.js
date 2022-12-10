@@ -1,4 +1,3 @@
-const { sign } = require('crypto');
 const fs = require('fs');
 
 const runForFile = (filename) => {
@@ -24,6 +23,7 @@ const runForFile = (filename) => {
     }
   }
 
+  // assignment 1
   let signalStrengthSum = 0;
   for (let i = 20; i < valuesAtCycle.length; i += 40) {
     const signalStrength = valuesAtCycle[i-1] * i;
