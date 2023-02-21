@@ -1,3 +1,5 @@
+// https://adventofcode.com/2015/day/1
+
 const fs = require('fs');
 const input = fs.readFileSync('input.txt');
 const data = input.toString();
